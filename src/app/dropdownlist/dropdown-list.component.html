@@ -1,0 +1,29 @@
+<div class="container">
+    <div>
+        <button type="button" (click)="onDropDownBtnClick()" class="btndropdown">
+            {{selectedItem}}
+            <i class="fa fa-angle-down" style="float: right; margin-top:3px">
+            </i>
+        </button>
+    </div>
+    <div class="card" *ngIf="visibleCard">
+        <!-- item -->
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let item of pagedItems" (click)="onSelectItem(item)">
+                {{item.Value}}
+            </li>
+        </ul>
+        <!-- pager -->
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">First</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{ page }}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
