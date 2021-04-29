@@ -7,7 +7,7 @@
         </button>
     </div>
     <div class="card" *ngIf="visibleCard">
-        <!-- item -->
+        <!-- items -->
         <ul class="list-group list-group-flush">
             <li class="list-group-item" *ngFor="let item of pagedItems" (click)="onSelectItem(item)">
                 {{item.Value}}
